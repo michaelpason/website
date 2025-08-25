@@ -361,3 +361,80 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
 #datenschutz a:hover {
   color: #ccc;
 }
+
+/* Toggle-Menü NUR auf Handy */
+@media (max-width: 600px) {
+  .menu-toggle { display: block; }
+
+  .main-nav {
+    position: fixed;
+    top: 0; right: 0; left: 0;
+    padding: 6px 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.9), rgba(10,10,10,0.7));
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+  }
+
+  .main-nav .menu {
+    display: none;
+    position: fixed;
+    top: 48px;
+    right: 12px;
+    left: 12px;
+    background: rgba(12,12,12,0.95);
+    border: 1px solid #00bfff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    list-style: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .main-nav .menu li { margin: 6px 0; }
+  .main-nav .menu a { display: block; padding: 10px 12px; }
+
+  .main-nav.open .menu { display: block; }
+  .main-nav.open .menu-toggle { border-color: #fff; color: #fff; }
+
+  /* Abstand nach oben */
+  .hero { padding-top: 16vh; }
+  main { padding-top: 80px; }
+
+  /* Überschriften kleiner auf Handy */
+  .hero h1 { font-size: 2rem; }
+  .subtitle { font-size: 1.2rem; }
+  h2 { font-size: 1.8rem; }
+}
+
+@media (max-width: 600px) {
+  .social-buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+    padding: 10px 0;
+    border-radius: 0;
+    max-width: 100%;
+    background: rgba(10,10,10,0.85);
+  }
+  .social-buttons a {
+    flex: 1;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .btn-primary {
+    display: block;          /* volle Breite */
+    width: 100%;             /* passt sich Container an */
+    max-width: 320px;        /* optional: begrenzen */
+    margin: 0 auto;          /* zentrieren */
+    white-space: normal;     /* Text darf umbrechen, aber */
+    text-align: center;      /* immer mittig */
+    padding: 14px 18px;      /* etwas schmaler, damit mehr Platz für Text */
+    font-size: 1rem;         /* leicht kleiner für Handy */
+  }
+}
