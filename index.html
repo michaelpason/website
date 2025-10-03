@@ -180,7 +180,26 @@
     <a href="https://mavenshowcase.com/profile/f83133e0-a0d1-7031-7712-63f918fc24c7" aria-label="Portfolio ansehen" target="_blank" rel="noopener">Portfolio</a>
   </div>
 
+  <script>
+    (function(){
+    const p=new URLSearchParams(location.search), lines=[];
+    ["gclid","utm_source","utm_medium","utm_campaign","utm_term","utm_content"]
+      .forEach(k=>p.has(k)&&lines.push(k+"="+p.get(k)));
+    if(!lines.length) return;
+    document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
+      const u=new URL(a.href);
+      const subj=u.searchParams.get('subject')||"Anfrage Power BI";
+      const body=(u.searchParams.get('body')||"Hallo Michael,\nbitte kontaktieren Sie mich.").replace(/\+/g," ");
+      u.searchParams.set('subject',subj);
+      u.searchParams.set('body',body + "\n\n---\nAd Source:\n" + lines.join("\n"));
+      a.href=u.toString();
+    });
+  })();
+  </script>
+
+
   <script src="script.js"></script>
 </body>
 </html>
+
 
