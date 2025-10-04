@@ -654,3 +654,15 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
 @media (prefers-reduced-motion: reduce){
   .carousel .slide, .carousel .caption{ transition:none }
 }
+
+@media (max-width: 600px) {
+  /* Mehr Abstand nach oben, damit es nicht in die Überschrift ragt */
+  .carousel {
+    margin-top: 40px;   /* ggf. anpassen */
+  }
+
+  /* Dots komplett ausblenden auf dem Handy */
+  .carousel .dots {
+    display: none !important;
+  }
+}
