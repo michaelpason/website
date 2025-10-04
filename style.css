@@ -472,7 +472,7 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
   display: flex;
   align-items: stretch;
   min-height: auto;       /* Höhe wächst automatisch */
-  height: 500px;           /* kein fixiertes Seitenverhältnis */
+  height: 600px;           /* kein fixiertes Seitenverhältnis */
   --center: calc((100% - var(--slide-w)) / 2);
   --next: calc(100% - var(--reveal));
   --prev: calc(var(--reveal) - var(--slide-w));
@@ -657,3 +657,4 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
 @media (prefers-reduced-motion: reduce){
   .carousel .slide, .carousel .caption{ transition:none }
 }
+
