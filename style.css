@@ -645,7 +645,7 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
   .carousel{ --slide-w: 82%; --reveal: 12% }
 }
 @media (max-width: 600px){
-  .carousel{ --slide-w: 88%; --reveal: 10%; margin-bottom: 400px }
+  .carousel{ --slide-w: 88%; --reveal: 10% }
   .carousel .controls .nav{ width:42px; height:42px; font-size:24px }
   .carousel .caption{ padding:14px 16px }
 }
@@ -655,12 +655,26 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
   .carousel .slide, .carousel .caption{ transition:none }
 }
 
+.carousel {
+  position: relative;
+  margin-top: 40px;      /* Platz über dem Carousel */
+  margin-bottom: 80px;   /* Platz unter dem Carousel */
+  z-index: 1;            /* hebt es über Hintergrund, aber unter Überschrift */
+}
+
+/* Nur auf Handy etwas mehr Platz oben, damit es nicht die H2 überlappt */
+@media (max-width: 600px) {
+  .carousel {
+    margin-top: 60px;
+    margin-bottom: 100px;
+  }
+
   /* Dots komplett ausblenden auf dem Handy */
   .carousel .dots {
     display: none !important;
-    margin-top:100px;
   }
 }
+
 
 
 
