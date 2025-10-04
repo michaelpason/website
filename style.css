@@ -663,7 +663,8 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
 }
 
 @media (max-width: 600px) {
-  .carousel .caption > p:not(.meta):not(:last-child) {
-    display: none !important;
+  .section.references {
+    padding-top: 200px;
   }
 }
+
