@@ -658,7 +658,7 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
 @media (max-width: 600px) {
   /* Mehr Abstand nach oben, damit es nicht in die Überschrift ragt */
   .carousel {
-    margin-bottom: 80px;   /* ggf. anpassen */
+    margin-bottom: 400px;   /* ggf. anpassen */
   }
 
   /* Dots komplett ausblenden auf dem Handy */
@@ -667,4 +667,5 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
     margin-top:100px;
   }
 }
+
 
