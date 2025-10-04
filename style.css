@@ -658,11 +658,13 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
 @media (max-width: 600px) {
   /* Mehr Abstand nach oben, damit es nicht in die Überschrift ragt */
   .carousel {
-    margin-top: 40px;   /* ggf. anpassen */
+    margin-bottom: 80px;   /* ggf. anpassen */
   }
 
   /* Dots komplett ausblenden auf dem Handy */
   .carousel .dots {
     display: none !important;
+    margin-top:100px;
   }
 }
+
