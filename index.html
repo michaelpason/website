@@ -129,13 +129,93 @@
     </section>
 
     <section class="section profile">
-      <h2>Meine Portfolio Projekte</h2>
-      <p>Überzeugen Sie sich selbst von meiner Arbeit</p>
-      <div class="iframe-container">
-        <iframe src="https://mavenshowcase.com/profile/f83133e0-a0d1-7031-7712-63f918fc24c7" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <a href="https://mavenshowcase.com/profile/f83133e0-a0d1-7031-7712-63f918fc24c7" class="iframe-link" target="_blank" rel="noopener">Seite in neuem Tab öffnen</a>
+    <h2>Portfolio Projekte</h2>
+    <p>Überzeugen Sie sich selbst von meiner Arbeit</p>
+      
+    <section class="carousel" aria-label="Portfolio Slideshow">
+    <input type="radio" name="carousel" id="c1" checked />
+    <input type="radio" name="carousel" id="c2" />
+    <input type="radio" name="carousel" id="c3" />
+    <input type="radio" name="carousel" id="c4" />
+
+    <div class="stage">
+      <article class="slide s1" aria-labelledby="p1-title">
+        <div class="media">
+          <img src="Bilder/RewardsChallenge.png" alt="Power BI Report" />
+        </div>
+        <div class="caption">
+          <h3 id="p1-title">Auswertung einer 30-tägigen Marketingkampagne</h3>
+          <p>Definition von Kundensegmenten für ein Café und einer Strategie für zukünftige Marketingkampagnen</p>
+          <p class="meta">Tools: Power BI, Python</p>
+          <p><a class="btn2" href="https://mavenshowcase.com/project/18997" target="_blank" rel="noopener">Projekt öffnen</a></p>
+        </div>
+      </article>
+
+      <article class="slide s2" aria-labelledby="p2-title">
+        <div class="media">
+          <img src="Bilder/CommuterChallenge.png" alt="Power BI Dashboard" />
+        </div>
+        <div class="caption">
+          <h3 id="p2-title">New Yorks öffentlicher Nahverkehr</h3>
+          <p>Visualisierung der Fahrgasttrends der New Yorker während und nach der Pandemie</p>
+          <p class="meta">Tools: Power BI</p>
+          <p><a class="btn2" href="https://mavenshowcase.com/project/22264" target="_blank" rel="noopener">Projekt öffnen</a></p>
+        </div>
+      </article>
+
+      <article class="slide s3" aria-labelledby="p3-title">
+        <div class="media">
+          <img src="Bilder/HospitalChallenge.png" alt="Power BI KPI Dashboard" />
+        </div>
+        <div class="caption">
+          <h3 id="p3-title">Geschäftskennzahlen eines Krankenhaus</h3>
+          <p>Entwicklung eines skalierbaren KPI-Dashboards für die Geschäftsleitung des Massachusetts General Hospital (MGH)</p>
+          <p class="meta">Tools: Power BI</p>
+          <p><a class="btn2" href="https://mavenshowcase.com/project/17127" target="_blank" rel="noopener">Projekt öffnen</a></p>
+        </div>
+      </article>
+
+      <article class="slide s4" aria-labelledby="p4-title">
+        <div class="media">
+          <img src="Bilder/RailChallenge.png" alt="Power BI Report" />
+        </div>
+        <div class="caption">
+          <h3 id="p4-title">Analyse von vier Monaten UK National Rail</h3>
+          <p>Explorative Analyse beliebter Strecken, Hauptreisezeiten, Umsätze und Pünktlichkeit im gesamten britischen Bahnnetz.</p>
+          <p class="meta">Tools: Power BI</p>
+          <p><a class="btn2" href="https://mavenshowcase.com/project/14732" target="_blank" rel="noopener">Projekt öffnen</a></p>
+        </div>
+      </article>
+    </div>
+
+<!-- Navigation (Labels schalten die Radio-Buttons) -->
+    <div class="controls c1" aria-hidden="true">
+      <label class="nav prev" for="c4" title="Vorheriges Projekt" aria-label="Vorheriges Projekt">‹</label>
+      <label class="nav next" for="c2" title="Nächstes Projekt" aria-label="Nächstes Projekt">›</label>
+    </div>
+    <div class="controls c2" aria-hidden="true">
+      <label class="nav prev" for="c1" title="Vorheriges Projekt" aria-label="Vorheriges Projekt">‹</label>
+      <label class="nav next" for="c3" title="Nächstes Projekt" aria-label="Nächstes Projekt">›</label>
+    </div>
+    <div class="controls c3" aria-hidden="true">
+      <label class="nav prev" for="c2" title="Vorheriges Projekt" aria-label="Vorheriges Projekt">‹</label>
+      <label class="nav next" for="c4" title="Nächstes Projekt" aria-label="Nächstes Projekt">›</label>
+    </div>
+    <div class="controls c4" aria-hidden="true">
+      <label class="nav prev" for="c3" title="Vorheriges Projekt" aria-label="Vorheriges Projekt">‹</label>
+      <label class="nav next" for="c1" title="Nächstes Projekt" aria-label="Nächstes Projekt">›</label>
+    </div>
+
+    <!-- kleine Punkte-Navigation -->
+    <div class="dots" role="tablist" aria-label="Direktwahl">
+      <label for="c1" role="tab" aria-selected="true" aria-controls="p1-title">•</label>
+      <label for="c2" role="tab" aria-controls="p2-title">•</label>
+      <label for="c3" role="tab" aria-controls="p3-title">•</label>
+      <label for="c4" role="tab" aria-controls="p4-title">•</label>
+    </div>
     </section>
+    </section>
+
 
     <section class="section references" id="references">
       <h2>Referenzen & Erfolge</h2>
@@ -201,5 +281,6 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
