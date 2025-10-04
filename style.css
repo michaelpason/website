@@ -662,13 +662,6 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
   z-index: 1;            /* hebt es über Hintergrund, aber unter Überschrift */
 }
 
-/* Nur auf Handy etwas mehr Platz oben, damit es nicht die H2 überlappt */
-@media (max-width: 600px) {
-  .carousel {
-    margin-top: 60px;
-    margin-bottom: 200px;
-  }
-
   /* Dots komplett ausblenden auf dem Handy */
   .carousel .dots {
     display: none !important;
@@ -676,10 +669,11 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
 }
 
 @media (max-width: 600px) {
-  .carousel .caption {
+  .carousel .caption p:not(.meta):not(:has(a)) {
     display: none !important;
   }
 }
+
 
 
 
