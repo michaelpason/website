@@ -438,3 +438,220 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
     font-size: 1rem;         /* leicht kleiner für Handy */
   }
 }
+
+/* Portfolio Karrusell */
+:root{
+  --slide-w: 88%;
+  --reveal: 20%;
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,.18);
+  --speed: 420ms;
+  --bg: #0f0f10;
+  --card: #141517;
+  --text: #e7e8ea;
+  --muted: #aeb3b8;
+  --accent: #7aa2ff;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  color:var(--text);
+  background:var(--bg);
+}
+
+/* ============ Carousel ============ */
+.carousel{
+  max-width: 80%;
+  margin: 40px auto;
+  padding: 0 16px 32px;
+  position: relative;
+}
+
+/* Radios verstecken */
+.carousel > input[type="radio"]{position:absolute; opacity:0; pointer-events:none}
+
+/* Bühne mit fixer Ratio, damit die Höhe stabil ist */
+.stage{
+  position: relative;
+  aspect-ratio: 16 / 11; /* Bild + Caption */
+  overflow: visible;
+  --center: calc((100% - var(--slide-w)) / 2);
+  --next: calc(100% - var(--reveal));
+  --prev: calc(var(--reveal) - var(--slide-w));
+}
+
+/* Grundstil der Slides */
+.slide{
+  position:absolute;
+  top:0;
+  width:var(--slide-w);
+  left:var(--center); /* wird je nach Zustand überschrieben */
+  background:var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition:
+    left var(--speed) ease,
+    transform var(--speed) ease,
+    opacity var(--speed) ease,
+    box-shadow var(--speed) ease;
+  opacity:.0;
+  pointer-events:none;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+/* Bild */
+.media img{
+  width:100%;
+  display:block;
+  object-fit:cover;
+  aspect-ratio: 16 / 9;
+}
+
+/* Caption unter dem Bild (nur bei aktiver Folie sichtbar) */
+.caption{
+  padding:16px 18px 18px;
+  display:grid;
+  gap:8px;
+  opacity:0;
+  transition:opacity var(--speed) ease;
+}
+.caption p{margin:0; color:var(--muted); line-height:1.45}
+.caption .meta{font-size:.999rem; opacity:.9}
+.caption .btn2{
+  display:inline-block;
+  text-decoration:none;
+  padding:8px 12px;
+  font-size: 1.0rem;
+  margin-top: 10px;  
+  border-radius:10px;
+  border:1px solid color-mix(in oklab, var(--accent) 70%, #ffffff 30%);
+  color:var(--text);
+  transition: transform .15s ease, background .2s ease;
+}
+.caption .btn2:hover{ transform: translateY(-1px); background: color-mix(in oklab, var(--accent) 22%, transparent)}
+
+/* Aktive/Preview-Zustände je Radio */
+#c1:checked ~ .stage .s1,
+#c2:checked ~ .stage .s2,
+#c3:checked ~ .stage .s3,
+#c4:checked ~ .stage .s4{
+  left:var(--center);
+  opacity:1;
+  pointer-events:auto;
+  transform: translateZ(0);
+  box-shadow: 0 18px 40px rgba(0,0,0,.3);
+}
+#c1:checked ~ .stage .s1 .caption,
+#c2:checked ~ .stage .s2 .caption,
+#c3:checked ~ .stage .s3 .caption,
+#c4:checked ~ .stage .s4 .caption{ opacity:1 }
+
+/* Nächste als rechte Vorschau (ca. 20% sichtbar) */
+#c1:checked ~ .stage .s2,
+#c2:checked ~ .stage .s3,
+#c3:checked ~ .stage .s4,
+#c4:checked ~ .stage .s1{
+  left:var(--next);
+  opacity:.92;
+  transform: scale(.45);
+}
+
+/* Vorherige als linke Vorschau (ca. 20% sichtbar) */
+#c1:checked ~ .stage .s4,
+#c2:checked ~ .stage .s1,
+#c3:checked ~ .stage .s2,
+#c4:checked ~ .stage .s3{
+  left:var(--prev);
+  opacity:.92;
+  transform: scale(.5);
+}
+
+/* Die nicht benachbarte Folie ausblenden */
+#c1:checked ~ .stage .s3,
+#c2:checked ~ .stage .s4,
+#c3:checked ~ .stage .s1,
+#c4:checked ~ .stage .s2{
+  opacity:0;
+  pointer-events:none;
+}
+
+/* Caption nur bei aktiver Karte zeigen */
+#c1:checked ~ .stage .s2 .caption,
+#c1:checked ~ .stage .s4 .caption,
+#c2:checked ~ .stage .s3 .caption,
+#c2:checked ~ .stage .s1 .caption,
+#c3:checked ~ .stage .s4 .caption,
+#c3:checked ~ .stage .s2 .caption,
+#c4:checked ~ .stage .s1 .caption,
+#c4:checked ~ .stage .s3 .caption{ display:none }
+
+/* Pfeil-Navigation */
+.controls{
+  position:absolute;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:space-between;
+  pointer-events:none;
+}
+.controls .nav{
+  pointer-events:auto;
+  user-select:none;
+  width:48px; height:48px;
+  display:grid; place-items:center;
+  margin: auto 2px;
+  background: rgba(20,21,23,.66);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius: 999px;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+  color: var(--text);
+  transition: transform .15s ease, background .2s ease;
+}
+.controls .nav:hover{ transform: scale(1.06); background: rgba(20,21,23,.8) }
+
+/* Passende Control-Gruppe einblenden */
+#c1:checked ~ .controls.c1,
+#c2:checked ~ .controls.c2,
+#c3:checked ~ .controls.c3,
+#c4:checked ~ .controls.c4{ display:flex }
+
+/* Dots */
+.dots{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin-top:50px;
+}
+.dots label{
+  cursor:pointer;
+  font-size:28px;
+  line-height:1;
+  opacity:.45;
+  transition: opacity .2s ease, transform .15s ease;
+}
+.dots label:hover{ opacity:.8; transform: translateY(-1px) }
+#c1:checked ~ .dots label[for="c1"],
+#c2:checked ~ .dots label[for="c2"],
+#c3:checked ~ .dots label[for="c3"],
+#c4:checked ~ .dots label[for="c4"]{ opacity:1 }
+
+/* Responsiv */
+@media (max-width: 900px){
+  :root{ --slide-w: 82%; --reveal: 12% }
+}
+@media (max-width: 600px){
+  :root{ --slide-w: 88%; --reveal: 10% }
+  .controls .nav{ width:42px; height:42px; font-size:24px }
+  .caption{ padding:14px 16px }
+}
+
+/* Motion-Einstellung respektieren */
+@media (prefers-reduced-motion: reduce){
+  .slide, .caption{ transition:none }
+}
