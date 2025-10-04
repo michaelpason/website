@@ -456,7 +456,7 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
   padding: 0 16px 42px;
   position: relative;
   color: var(--text);
-  height: 500px
+  height: 500px;
 }
 
 /* Radios verstecken */
@@ -658,6 +658,7 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
 @media (prefers-reduced-motion: reduce){
   .carousel .slide, .carousel .caption{ transition:none }
 }
+
 
 
 
