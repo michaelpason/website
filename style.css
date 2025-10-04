@@ -468,8 +468,11 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
 /* Bühne mit fixer Ratio, damit die Höhe stabil bleibt */
 .carousel .stage{
   position: relative;
-  aspect-ratio: 16 / 11; /* Bild + Caption */
   overflow: visible;
+  display: flex;
+  align-items: stretch;
+  min-height: auto;       /* Höhe wächst automatisch */
+  height: 480px;           /* kein fixiertes Seitenverhältnis */
   --center: calc((100% - var(--slide-w)) / 2);
   --next: calc(100% - var(--reveal));
   --prev: calc(var(--reveal) - var(--slide-w));
@@ -655,27 +658,9 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
   .carousel .slide, .carousel .caption{ transition:none }
 }
 
-.carousel {
-  position: relative;
-  margin-top: 40px;      /* Platz über dem Carousel */
-  margin-bottom: 80px;   /* Platz unter dem Carousel */
-  z-index: 1;            /* hebt es über Hintergrund, aber unter Überschrift */
-}
-
-  /* Dots komplett ausblenden auf dem Handy */
+ @media (max-width: 600px) {
+  /* Dots komplett ausblenden nur auf dem Handy */
   .carousel .dots {
     display: none !important;
   }
 }
-
-@media (max-width: 600px) {
-  .carousel .caption p:not(.meta):not(:has(a)) {
-    display: none !important;
-  }
-}
-
-
-
-
-
-
