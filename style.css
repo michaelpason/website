@@ -440,40 +440,33 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
 }
 
 /* Portfolio Karrusell */
-:root{
+.carousel {
   --slide-w: 88%;
   --reveal: 20%;
   --radius: 16px;
   --shadow: 0 10px 30px rgba(0,0,0,.18);
   --speed: 420ms;
-  --bg: #0f0f10;
   --card: #141517;
   --text: #e7e8ea;
   --muted: #aeb3b8;
   --accent: #7aa2ff;
-}
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  color:var(--text);
-  background:var(--bg);
-}
-
-/* ============ Carousel ============ */
-.carousel{
   max-width: 80%;
   margin: 40px auto;
-  padding: 0 16px 32px;
+  padding: 0 16px 42px;
   position: relative;
+  color: var(--text);
 }
 
 /* Radios verstecken */
-.carousel > input[type="radio"]{position:absolute; opacity:0; pointer-events:none}
+.carousel > input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
 
-/* Bühne mit fixer Ratio, damit die Höhe stabil ist */
-.stage{
+/* Bühne mit fixer Ratio, damit die Höhe stabil bleibt */
+.carousel .stage{
   position: relative;
   aspect-ratio: 16 / 11; /* Bild + Caption */
   overflow: visible;
@@ -483,11 +476,11 @@ body{
 }
 
 /* Grundstil der Slides */
-.slide{
+.carousel .slide{
   position:absolute;
   top:0;
   width:var(--slide-w);
-  left:var(--center); /* wird je nach Zustand überschrieben */
+  left:var(--center);
   background:var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -496,7 +489,7 @@ body{
     transform var(--speed) ease,
     opacity var(--speed) ease,
     box-shadow var(--speed) ease;
-  opacity:.0;
+  opacity:0;
   pointer-events:none;
   display:flex;
   flex-direction:column;
@@ -504,35 +497,38 @@ body{
 }
 
 /* Bild */
-.media img{
+.carousel .media img{
   width:100%;
   display:block;
   object-fit:cover;
   aspect-ratio: 16 / 9;
 }
 
-/* Caption unter dem Bild (nur bei aktiver Folie sichtbar) */
-.caption{
+/* Caption */
+.carousel .caption{
   padding:16px 18px 18px;
   display:grid;
   gap:8px;
   opacity:0;
   transition:opacity var(--speed) ease;
 }
-.caption p{margin:0; color:var(--muted); line-height:1.45}
-.caption .meta{font-size:.999rem; opacity:.9}
-.caption .btn2{
+.carousel .caption p{margin:0; color:var(--muted); line-height:1.45}
+.carousel .caption .meta{font-size:.999rem; opacity:.9}
+.carousel .caption .btn2{
   display:inline-block;
   text-decoration:none;
   padding:8px 12px;
-  font-size: 1.0rem;
-  margin-top: 10px;  
+  font-size: .95rem;
+  margin-top: 10px;
   border-radius:10px;
   border:1px solid color-mix(in oklab, var(--accent) 70%, #ffffff 30%);
   color:var(--text);
   transition: transform .15s ease, background .2s ease;
 }
-.caption .btn2:hover{ transform: translateY(-1px); background: color-mix(in oklab, var(--accent) 22%, transparent)}
+.carousel .caption .btn2:hover{
+  transform: translateY(-1px);
+  background: color-mix(in oklab, var(--accent) 22%, transparent);
+}
 
 /* Aktive/Preview-Zustände je Radio */
 #c1:checked ~ .stage .s1,
@@ -550,7 +546,7 @@ body{
 #c3:checked ~ .stage .s3 .caption,
 #c4:checked ~ .stage .s4 .caption{ opacity:1 }
 
-/* Nächste als rechte Vorschau (ca. 20% sichtbar) */
+/* Nächste als rechte Vorschau */
 #c1:checked ~ .stage .s2,
 #c2:checked ~ .stage .s3,
 #c3:checked ~ .stage .s4,
@@ -560,7 +556,7 @@ body{
   transform: scale(.45);
 }
 
-/* Vorherige als linke Vorschau (ca. 20% sichtbar) */
+/* Vorherige als linke Vorschau */
 #c1:checked ~ .stage .s4,
 #c2:checked ~ .stage .s1,
 #c3:checked ~ .stage .s2,
@@ -590,7 +586,7 @@ body{
 #c4:checked ~ .stage .s3 .caption{ display:none }
 
 /* Pfeil-Navigation */
-.controls{
+.carousel .controls{
   position:absolute;
   inset:0;
   display:none;
@@ -598,7 +594,7 @@ body{
   justify-content:space-between;
   pointer-events:none;
 }
-.controls .nav{
+.carousel .controls .nav{
   pointer-events:auto;
   user-select:none;
   width:48px; height:48px;
@@ -613,7 +609,10 @@ body{
   color: var(--text);
   transition: transform .15s ease, background .2s ease;
 }
-.controls .nav:hover{ transform: scale(1.06); background: rgba(20,21,23,.8) }
+.carousel .controls .nav:hover{
+  transform: scale(1.06);
+  background: rgba(20,21,23,.8);
+}
 
 /* Passende Control-Gruppe einblenden */
 #c1:checked ~ .controls.c1,
@@ -622,20 +621,20 @@ body{
 #c4:checked ~ .controls.c4{ display:flex }
 
 /* Dots */
-.dots{
+.carousel .dots{
   display:flex;
   gap:10px;
   justify-content:center;
   margin-top:50px;
 }
-.dots label{
+.carousel .dots label{
   cursor:pointer;
   font-size:28px;
   line-height:1;
   opacity:.45;
   transition: opacity .2s ease, transform .15s ease;
 }
-.dots label:hover{ opacity:.8; transform: translateY(-1px) }
+.carousel .dots label:hover{ opacity:.8; transform: translateY(-1px) }
 #c1:checked ~ .dots label[for="c1"],
 #c2:checked ~ .dots label[for="c2"],
 #c3:checked ~ .dots label[for="c3"],
@@ -643,15 +642,15 @@ body{
 
 /* Responsiv */
 @media (max-width: 900px){
-  :root{ --slide-w: 82%; --reveal: 12% }
+  .carousel{ --slide-w: 82%; --reveal: 12% }
 }
 @media (max-width: 600px){
-  :root{ --slide-w: 88%; --reveal: 10% }
-  .controls .nav{ width:42px; height:42px; font-size:24px }
-  .caption{ padding:14px 16px }
+  .carousel{ --slide-w: 88%; --reveal: 10% }
+  .carousel .controls .nav{ width:42px; height:42px; font-size:24px }
+  .carousel .caption{ padding:14px 16px }
 }
 
 /* Motion-Einstellung respektieren */
 @media (prefers-reduced-motion: reduce){
-  .slide, .caption{ transition:none }
+  .carousel .slide, .carousel .caption{ transition:none }
 }
