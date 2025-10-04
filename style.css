@@ -645,7 +645,7 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
   .carousel{ --slide-w: 82%; --reveal: 12% }
 }
 @media (max-width: 600px){
-  .carousel{ --slide-w: 88%; --reveal: 10% }
+  .carousel{ --slide-w: 88%; --reveal: 10%; margin-bottom: 400px }
   .carousel .controls .nav{ width:42px; height:42px; font-size:24px }
   .carousel .caption{ padding:14px 16px }
 }
@@ -655,17 +655,12 @@ footer { bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px; fon
   .carousel .slide, .carousel .caption{ transition:none }
 }
 
-@media (max-width: 600px) {
-  /* Mehr Abstand nach oben, damit es nicht in die Überschrift ragt */
-  .carousel {
-    margin-bottom: 400px;   /* ggf. anpassen */
-  }
-
   /* Dots komplett ausblenden auf dem Handy */
   .carousel .dots {
     display: none !important;
     margin-top:100px;
   }
 }
+
 
 
